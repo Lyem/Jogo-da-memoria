@@ -9,21 +9,22 @@ namespace JogoDaMemoria
         {
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
+            string bemvindo = "Bem vindo ao Jogo da Memoria!!";
             float altura, largura;
             altura = Console.WindowHeight;
             largura = Console.WindowWidth;
-            metadel(largura/2+largura/3);
+            metadel(largura / 2 + bemvindo.Length);
             Console.Title = "Jogo da Memoria!!";
-            Console.WriteLine("Bem vindo ao Jogo da Memoria!!");
+            Console.WriteLine(bemvindo);
             linha(largura);
             Console.Write("\n");
-            int dificudade ,jogando = 0;
+            int dificudade, jogando = 0;
             int[] num;
             Random rand = new Random();
             num = new int[5];
             while (jogando == 0)
             {
-                int acerto = 0, erros = 0,retorno = 0,level = 1;
+                int acerto = 0, erros = 0, retorno = 0, level = 1;
                 Console.WriteLine("1-Fácil\n2-Medio\n3-Difícil");
                 Console.Write("Escolha a dificudade: ");
                 dificudade = Convert.ToInt32(Console.ReadLine());
@@ -38,14 +39,14 @@ namespace JogoDaMemoria
                     metadel(largura);
                     Console.WriteLine("Fácil");
                     Thread.Sleep(3000);
-                    fini:
+                fini:
                     for (int i = 0; i < 5; i++)
                     {
-                       num[i] = numbers(altura, largura,level,i,10);
+                        num[i] = numbers(altura, largura, level, i, 10);
                     }
                     for (int i = 0; i < 5; i++)
                     {
-                        retorno = teste(num[i],i);
+                        retorno = teste(num[i], i);
                         acerto += retorno;
                         if (retorno == 0)
                         {
@@ -55,7 +56,7 @@ namespace JogoDaMemoria
                     Console.WriteLine("Acertou: " + acerto);
                     Console.WriteLine("Errou: " + erros);
                     Thread.Sleep(2000);
-                    if (acerto >= 2 && level<3)
+                    if (acerto >= 2 && level < 3)
                     {
                         acerto = 0;
                         level++;
@@ -83,10 +84,10 @@ namespace JogoDaMemoria
                     metadel(largura);
                     Console.WriteLine("Medio");
                     Thread.Sleep(3000);
-                    mini:
+                mini:
                     for (int i = 0; i < 5; i++)
                     {
-                       num[i] = numbers(altura, largura,level,i,100);
+                        num[i] = numbers(altura, largura, level, i, 100);
                     }
                     for (int i = 0; i < 5; i++)
                     {
@@ -128,7 +129,7 @@ namespace JogoDaMemoria
                     metadel(largura);
                     Console.WriteLine("Difícil");
                     Thread.Sleep(3000);
-                    dini:
+                dini:
                     for (int i = 0; i < 5; i++)
                     {
                         num[i] = numbers(altura, largura, level, i, 1000);
@@ -153,7 +154,7 @@ namespace JogoDaMemoria
                         Thread.Sleep(2000);
                         goto dini;
                     }
-                    else if(level != 3)
+                    else if (level != 3)
                     {
                         Console.Clear();
                         metadea(altura);
@@ -176,7 +177,7 @@ namespace JogoDaMemoria
 
         static void metadea(float a)
         {
-            for (int i = 0;i<a/5;i++)
+            for (int i = 0; i < a / 5; i++)
             {
                 Console.WriteLine("\n");
             }
@@ -184,7 +185,7 @@ namespace JogoDaMemoria
 
         static void metadel(float l)
         {
-            for (float i = 0; i < l / 2; i++ )
+            for (float i = 0; i < l / 2; i++)
             {
                 Console.Write(" ");
             }
@@ -198,14 +199,14 @@ namespace JogoDaMemoria
             }
         }
 
-        static int teste(int n,int i)
+        static int teste(int n, int i)
         {
             Console.Clear();
-            int num,a = 0;
-            i += 1; 
+            int num, a = 0;
+            i += 1;
             Console.WriteLine("Escreva o " + i + " Numero");
             num = Convert.ToInt32(Console.ReadLine());
-            if (n==num)
+            if (n == num)
             {
                 Console.WriteLine("Certo");
                 Thread.Sleep(2000);
@@ -220,7 +221,7 @@ namespace JogoDaMemoria
             return a;
         }
 
-        static int numbers(float altura, float largura, int level, int i,int f)
+        static int numbers(float altura, float largura, int level, int i, int f)
         {
             int[] num;
             num = new int[5];
